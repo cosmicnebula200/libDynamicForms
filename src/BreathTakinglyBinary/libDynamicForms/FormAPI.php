@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace jojoe77777\FormAPI;
+namespace BreathTakinglyBinary\libDynamicForms;
 
 use pocketmine\plugin\PluginBase;
 
