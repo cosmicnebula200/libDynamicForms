@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 namespace BreathTakinglyBinary\libDynamicForms;
 
-class SimpleForm extends Form {
+abstract class SimpleForm extends Form {
 
     const IMAGE_TYPE_PATH = 0;
     const IMAGE_TYPE_URL = 1;
@@ -14,11 +14,8 @@ class SimpleForm extends Form {
 
     private $labelMap = [];
 
-    /**
-     * @param callable|null $callable
-     */
-    public function __construct(?callable $callable) {
-        parent::__construct($callable);
+
+    public function __construct() {
         $this->data["type"] = "form";
         $this->data["title"] = "";
         $this->data["content"] = $this->content;

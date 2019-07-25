@@ -4,16 +4,13 @@ declare(strict_types = 1);
 
 namespace BreathTakinglyBinary\libDynamicForms;
 
-class ModalForm extends Form {
+abstract class ModalForm extends Form {
 
     /** @var string */
     private $content = "";
 
-    /**
-     * @param callable|null $callable
-     */
-    public function __construct(?callable $callable) {
-        parent::__construct($callable);
+
+    public function __construct() {
         $this->data["type"] = "modal";
         $this->data["title"] = "";
         $this->data["content"] = $this->content;

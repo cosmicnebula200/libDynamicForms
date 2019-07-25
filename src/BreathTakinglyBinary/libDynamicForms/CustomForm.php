@@ -4,15 +4,12 @@ declare(strict_types = 1);
 
 namespace BreathTakinglyBinary\libDynamicForms;
 
-class CustomForm extends Form {
+abstract class CustomForm extends Form {
 
     private $labelMap = [];
 
-    /**
-     * @param callable|null $callable
-     */
-    public function __construct(?callable $callable) {
-        parent::__construct($callable);
+
+    public function __construct() {
         $this->data["type"] = "custom_form";
         $this->data["title"] = "";
         $this->data["content"] = [];

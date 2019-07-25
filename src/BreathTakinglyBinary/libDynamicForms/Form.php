@@ -11,30 +11,14 @@ abstract class Form implements IForm{
 
     /** @var array */
     protected $data = [];
-    /** @var callable|null */
-    private $callable;
-
-    /**
-     * @param callable|null $callable
-     */
-    public function __construct(?callable $callable) {
-        $this->callable = $callable;
-    }
-
-    public function getCallable() : ?callable {
-        return $this->callable;
-    }
-
-    public function setCallable(?callable $callable) {
-        $this->callable = $callable;
-    }
 
     public function handleResponse(Player $player, $data) : void {
         $this->processData($data);
-        $callable = $this->getCallable();
-        if($callable !== null) {
-            $callable($player, $data);
+        if($data === null) {
+            $this->onClose($player);
+            return;
         }
+        $this->onResponse($player, $data);
     }
 
     public function processData(&$data) : void {
@@ -42,5 +26,24 @@ abstract class Form implements IForm{
 
     public function jsonSerialize(){
         return $this->data;
+    }
+
+
+    /**
+     * Children classes should implement this method to properly
+     * deal with non-null player responses.
+     *
+     * @param Player $player
+     * @param        $data
+     */
+    public abstract function onResponse(Player $player, $data) : void;
+
+    /**
+     * This method is called when a player closes the form without sending an response.
+     *
+     * @param Player $player
+     */
+    public function onClose(Player $player) : void {
+
     }
 }
