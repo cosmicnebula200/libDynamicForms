@@ -54,12 +54,12 @@ abstract class CustomForm extends Form {
         $this->labelMap[] = $label ?? count($this->labelMap);
     }
 
-    /**
-     * @param string $text
-     * @param bool|null $default
+    /***
+     * @param string      $text
      * @param string|null $label
+     * @param bool|null   $default
      */
-    public function addToggle(string $text, bool $default = null, ?string $label = null) : void {
+    public function addToggle(string $text, ?string $label = null, bool $default = null) : void {
         $content = ["type" => "toggle", "text" => $text];
         if($default !== null) {
             $content["default"] = $default;
@@ -69,14 +69,14 @@ abstract class CustomForm extends Form {
     }
 
     /**
-     * @param string $text
-     * @param int $min
-     * @param int $max
-     * @param int $step
-     * @param int $default
+     * @param string      $text
+     * @param int         $min
+     * @param int         $max
      * @param string|null $label
+     * @param int         $step
+     * @param int         $default
      */
-    public function addSlider(string $text, int $min, int $max, int $step = -1, int $default = -1, ?string $label = null) : void {
+    public function addSlider(string $text, int $min, int $max, ?string $label = null, int $step = -1, int $default = -1) : void {
         $content = ["type" => "slider", "text" => $text, "min" => $min, "max" => $max];
         if($step !== -1) {
             $content["step"] = $step;
@@ -89,12 +89,12 @@ abstract class CustomForm extends Form {
     }
 
     /**
-     * @param string $text
-     * @param array $steps
-     * @param int $defaultIndex
+     * @param string      $text
      * @param string|null $label
+     * @param array       $steps
+     * @param int         $defaultIndex
      */
-    public function addStepSlider(string $text, array $steps, int $defaultIndex = -1, ?string $label = null) : void {
+    public function addStepSlider(string $text, ?string $label = null, array $steps, int $defaultIndex = -1) : void {
         $content = ["type" => "step_slider", "text" => $text, "steps" => $steps];
         if($defaultIndex !== -1) {
             $content["default"] = $defaultIndex;
@@ -104,23 +104,23 @@ abstract class CustomForm extends Form {
     }
 
     /**
-     * @param string $text
-     * @param array $options
-     * @param int $default
+     * @param string      $text
      * @param string|null $label
+     * @param array       $options
+     * @param int|null    $default
      */
-    public function addDropdown(string $text, array $options, int $default = null, ?string $label = null) : void {
+    public function addDropdown(string $text, ?string $label = null, array $options, int $default = null) : void {
         $this->addContent(["type" => "dropdown", "text" => $text, "options" => $options, "default" => $default]);
         $this->labelMap[] = $label ?? count($this->labelMap);
     }
 
     /**
-     * @param string $text
-     * @param string $placeholder
-     * @param string $default
+     * @param string      $text
      * @param string|null $label
+     * @param string      $placeholder
+     * @param string|null $default
      */
-    public function addInput(string $text, string $placeholder = "", string $default = null, ?string $label = null) : void {
+    public function addInput(string $text, ?string $label = null, string $placeholder = "", string $default = null) : void {
         $this->addContent(["type" => "input", "text" => $text, "placeholder" => $placeholder, "default" => $default]);
         $this->labelMap[] = $label ?? count($this->labelMap);
     }
