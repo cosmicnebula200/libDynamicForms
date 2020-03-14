@@ -16,8 +16,7 @@ abstract class CustomForm extends Form {
 
 
     public function __construct(string $title = "", ?Form $previousForm = null){
-        parent::__construct($title, $previousForm);
-        $this->data["type"] = "custom_form";
+        parent::__construct(self::TYPE_CUSTOM, $title, $previousForm);
         $this->data["content"] = [];
     }
 

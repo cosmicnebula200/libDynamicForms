@@ -22,8 +22,7 @@ abstract class SimpleForm extends Form {
 
 
     public function __construct(string $title = "", ?Form $previousForm = null){
-        parent::__construct($title, $previousForm);
-        $this->data["type"] = "form";
+        parent::__construct(self::TYPE_SIMPLE ,$title, $previousForm);
         $this->data["content"] = $this->content;
     }
 

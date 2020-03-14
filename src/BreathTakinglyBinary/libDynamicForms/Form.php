@@ -15,13 +15,18 @@ use pocketmine\Player;
 
 abstract class Form implements IForm{
 
+    const TYPE_CUSTOM = 2;
+    const TYPE_MODAL = 1;
+    const TYPE_SIMPLE = 0;
+
     /** @var array */
     protected $data = [];
 
     /** @var ?Form */
     private $previousForm;
 
-    public function __construct(string $title = "", ?Form $previousForm = null){
+    public function __construct(int $type, string $title = "", ?Form $previousForm = null){
+        $this->setType($type);
         $this->data["title"] = $title;
         $this->previousForm = $previousForm;
     }
@@ -46,6 +51,29 @@ abstract class Form implements IForm{
      */
     public function getPreviousForm() : ?Form{
         return $this->previousForm;
+    }
+
+    /**
+     * @param int $type
+     *
+     * @throws \InvalidArgumentException
+     */
+    final private function setType(int $type){
+        $typeString = "";
+        switch($type){
+            case 0:
+                $typeString = "form";
+                break;
+            case 1:
+                $typeString = "modal";
+                break;
+            case 2:
+                $typeString = "custom_form";
+                break;
+            default:
+                throw new \InvalidArgumentException("Invalid value of $type passed to Form::setType()");
+        }
+        $this->data["type"] = $typeString;
     }
 
     public function handleResponse(Player $player, $data) : void {

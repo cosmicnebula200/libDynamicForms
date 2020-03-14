@@ -17,8 +17,7 @@ abstract class ModalForm extends Form {
 
 
     public function __construct(string $title = "", ?Form $previousForm = null){
-        parent::__construct($title, $previousForm);
-        $this->data["type"] = "modal";
+        parent::__construct(self::TYPE_MODAL ,$title, $previousForm);
         $this->data["content"] = $this->content;
         $this->data["button1"] = "";
         $this->data["button2"] = "";
