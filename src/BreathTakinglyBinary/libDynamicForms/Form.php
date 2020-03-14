@@ -18,6 +18,25 @@ abstract class Form implements IForm{
     /** @var array */
     protected $data = [];
 
+    public function __construct(string $title = ""){
+        $this->data["title"] = $title;
+    }
+
+
+    /**
+     * @param string $title
+     */
+    public function setTitle(string $title) : void {
+        $this->data["title"] = $title;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle() : string {
+        return (isset($this->data["title"]) and is_string($this->data["title"])) ? (string) $this->data["title"] : "";
+    }
+
     public function handleResponse(Player $player, $data) : void {
         $this->processData($data);
         if($data === null) {

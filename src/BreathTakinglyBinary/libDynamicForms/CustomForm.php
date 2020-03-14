@@ -15,9 +15,9 @@ abstract class CustomForm extends Form {
     private $labelMap = [];
 
 
-    public function __construct() {
+    public function __construct(string $title = ""){
+        parent::__construct($title);
         $this->data["type"] = "custom_form";
-        $this->data["title"] = "";
         $this->data["content"] = [];
     }
 
@@ -29,20 +29,6 @@ abstract class CustomForm extends Form {
             }
             $data = $new;
         }
-    }
-
-    /**
-     * @param string $title
-     */
-    public function setTitle(string $title) : void {
-        $this->data["title"] = $title;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTitle() : string {
-        return $this->data["title"];
     }
 
     /**

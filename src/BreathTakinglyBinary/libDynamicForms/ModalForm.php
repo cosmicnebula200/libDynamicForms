@@ -16,26 +16,12 @@ abstract class ModalForm extends Form {
     private $content = "";
 
 
-    public function __construct() {
+    public function __construct(string $title = ""){
+        parent::__construct($title);
         $this->data["type"] = "modal";
-        $this->data["title"] = "";
         $this->data["content"] = $this->content;
         $this->data["button1"] = "";
         $this->data["button2"] = "";
-    }
-
-    /**
-     * @param string $title
-     */
-    public function setTitle(string $title) : void {
-        $this->data["title"] = $title;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTitle() : string {
-        return $this->data["title"];
     }
 
     /**
