@@ -15,8 +15,8 @@ abstract class CustomForm extends Form {
     private $labelMap = [];
 
 
-    public function __construct(string $title = ""){
-        parent::__construct($title);
+    public function __construct(string $title = "", ?Form $previousForm = null){
+        parent::__construct($title, $previousForm);
         $this->data["type"] = "custom_form";
         $this->data["content"] = [];
     }

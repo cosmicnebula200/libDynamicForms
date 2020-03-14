@@ -18,8 +18,12 @@ abstract class Form implements IForm{
     /** @var array */
     protected $data = [];
 
-    public function __construct(string $title = ""){
+    /** @var ?Form */
+    private $previousForm;
+
+    public function __construct(string $title = "", ?Form $previousForm = null){
         $this->data["title"] = $title;
+        $this->previousForm = $previousForm;
     }
 
 
@@ -35,6 +39,13 @@ abstract class Form implements IForm{
      */
     public function getTitle() : string {
         return (isset($this->data["title"]) and is_string($this->data["title"])) ? (string) $this->data["title"] : "";
+    }
+
+    /**
+     * @return ?Form
+     */
+    public function getPreviousForm() : ?Form{
+        return $this->previousForm;
     }
 
     public function handleResponse(Player $player, $data) : void {

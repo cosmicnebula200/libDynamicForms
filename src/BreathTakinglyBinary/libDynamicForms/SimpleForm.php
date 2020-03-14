@@ -21,8 +21,8 @@ abstract class SimpleForm extends Form {
     private $labelMap = [];
 
 
-    public function __construct(string $title = ""){
-        parent::__construct($title);
+    public function __construct(string $title = "", ?Form $previousForm = null){
+        parent::__construct($title, $previousForm);
         $this->data["type"] = "form";
         $this->data["content"] = $this->content;
     }
