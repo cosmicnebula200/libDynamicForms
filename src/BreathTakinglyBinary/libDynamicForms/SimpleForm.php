@@ -10,6 +10,8 @@ declare(strict_types = 1);
 
 namespace BreathTakinglyBinary\libDynamicForms;
 
+use pocketmine\form\FormValidationException;
+
 abstract class SimpleForm extends Form {
 
     const IMAGE_TYPE_PATH = 0;
@@ -27,6 +29,13 @@ abstract class SimpleForm extends Form {
     }
 
     public function processData(&$data) : void {
+        if(!is_int($data)) {
+            throw new FormValidationException("Expected an integer response, got " . gettype($data));
+        }
+        $count = count($this->data["buttons"]);
+        if($data >= $count || $data < 0) {
+            throw new FormValidationException("Button $data does not exist");
+        }
         $data = $this->labelMap[$data] ?? null;
     }
 

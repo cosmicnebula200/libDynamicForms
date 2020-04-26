@@ -10,6 +10,8 @@ declare(strict_types = 1);
 
 namespace BreathTakinglyBinary\libDynamicForms;
 
+use pocketmine\form\FormValidationException;
+
 abstract class ModalForm extends Form {
 
     /** @var string */
@@ -23,6 +25,12 @@ abstract class ModalForm extends Form {
         $this->data["button2"] = "";
     }
 
+    public function processData(&$data) : void {
+        if(!is_bool($data)) {
+            throw new FormValidationException("Expected a boolean response, got " . gettype($data));
+        }
+    }
+    
     /**
      * @return string
      */
