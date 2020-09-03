@@ -4,7 +4,6 @@ branches:
 - stable
 projects:
   libDynamicForms:
-    path: ""
     model: virion
     type: library
 ...
