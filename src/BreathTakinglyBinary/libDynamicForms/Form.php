@@ -77,11 +77,11 @@ abstract class Form implements IForm{
     }
 
     public function handleResponse(Player $player, $data) : void {
-        $this->processData($data);
         if($data === null) {
             $this->onClose($player);
             return;
         }
+        $this->processData($data);
         $this->onResponse($player, $data);
     }
 
