@@ -50,7 +50,8 @@ abstract class CustomForm extends Form {
      * @param string      $content        // Visible text label to tell the player what this item is for.
      * @param string|null $identifier   // Internal identifier used in form response to idententify the specific content.
      *
-     * @deprecated See
+     * @deprecated
+     * @see CustomForm::addNonInputContentArea()
      */
     public function addLabel(string $content, ?string $identifier = null) : void {
         $this->addNonInputContentArea($content, $identifier);

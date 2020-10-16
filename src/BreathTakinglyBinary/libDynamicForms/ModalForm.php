@@ -48,6 +48,7 @@ abstract class ModalForm extends Form {
     /**
      * @param string $text
      * @deprecated
+     * @see ModalForm::setTrueButtonLabel()
      */
     public function setButton1(string $text) : void {
         $this->setTrueButtonLabel($text);
@@ -65,6 +66,7 @@ abstract class ModalForm extends Form {
     /**
      * @return string
      * @deprecated
+     * @see ModalForm::getTrueButtonLabel()
      */
     public function getButton1() : string {
         return $this->getTrueButtonLabel();
@@ -82,6 +84,7 @@ abstract class ModalForm extends Form {
     /**
      * @param string $text
      * @deprecated
+     * @see ModalForm::setFalseButtonLabel()
      */
     public function setButton2(string $text) : void {
         $this->setFalseButtonLabel($text);
@@ -99,6 +102,7 @@ abstract class ModalForm extends Form {
     /**
      * @return string
      * @deprecated
+     * @see ModalForm::getFalseButtonLabel()
      */
     public function getButton2() : string {
         return $this->getFalseButtonLabel();
