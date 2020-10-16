@@ -47,29 +47,69 @@ abstract class ModalForm extends Form {
 
     /**
      * @param string $text
+     * @deprecated
      */
     public function setButton1(string $text) : void {
+        $this->setTrueButtonLabel($text);
+    }
+
+    /**
+     * Used to set the label for the button that will return a true value when clicked.
+     *
+     * @param string $text
+     */
+    public function setTrueButtonLabel(string $text) : void{
         $this->data["button1"] = $text;
     }
 
     /**
      * @return string
+     * @deprecated
      */
     public function getButton1() : string {
+        return $this->getTrueButtonLabel();
+    }
+
+    /**
+     * Returns the label for the button that returns a response of true.
+     *
+     * @return string
+     */
+    public function getTrueButtonLabel() : string{
         return $this->data["button1"];
     }
 
     /**
      * @param string $text
+     * @deprecated
      */
     public function setButton2(string $text) : void {
+        $this->setFalseButtonLabel($text);
+    }
+
+    /**
+     * Used to set the label for the button that will return a false value when clicked.
+     *
+     * @param string $text
+     */
+    public function setFalseButtonLabel(string $text) : void{
         $this->data["button2"] = $text;
     }
 
     /**
      * @return string
+     * @deprecated
      */
     public function getButton2() : string {
+        return $this->getFalseButtonLabel();
+    }
+
+    /**
+     * Returns the label for the button that returns a response of false.
+     *
+     * @return string
+     */
+    public function getFalseButtonLabel() : string{
         return $this->data["button2"];
     }
 }
